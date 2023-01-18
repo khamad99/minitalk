@@ -6,23 +6,29 @@
 /*   By: kalshaer <kalshaer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:21:16 by kalshaer          #+#    #+#             */
-/*   Updated: 2023/01/17 14:34:07 by kalshaer         ###   ########.fr       */
+/*   Updated: 2023/01/18 14:09:45 by kalshaer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
+void instantiatei(int *i)
+{
+	*i = 0;
+}
 
 /* this function handle the SIGUSR1 and SIGUSR2 that have been sent from server.*/
 
 static void	handler_sigusr(int sig)
 {	
-	static int i = 0;
+	static int i;
+	if (!i)
+		instantiatei(&i);
 	if (sig == SIGUSR1)
 		i++;
 	else
 	{
-		ft_printf("%d received\n", i);
+		ft_printf("received: %d\n", i);
 		exit(0);
 	}
 }

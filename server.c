@@ -6,21 +6,28 @@
 /*   By: kalshaer <kalshaer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 08:47:31 by kalshaer          #+#    #+#             */
-/*   Updated: 2023/01/17 14:24:14 by kalshaer         ###   ########.fr       */
+/*   Updated: 2023/01/18 14:02:56 by kalshaer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
+static void instantiate(int *i, pid_t *cpid, unsigned char *c, siginfo_t *info)
+{
+	*i = 0;
+	*cpid = info->si_pid;
+	*c = 0;
+}
+
 static void	handler_sigusr_server(int sig, siginfo_t *info, void *ucontext)
 {
 	(void)ucontext;
-	static int				i = 0;
-	static pid_t			cpid = 0;
-	static unsigned char	c = 0;
+	static int				i;
+	static pid_t			cpid;
+	static unsigned char	c;
 
-	if (!cpid)
-		cpid = info->si_pid;
+	if ((!i && !cpid) || !i)
+		instantiate(&i, &cpid, &c, info);
 	c = c | (sig == SIGUSR2);
 	if (++i == 8)
 	{
@@ -32,7 +39,6 @@ static void	handler_sigusr_server(int sig, siginfo_t *info, void *ucontext)
 			return ;
 		}
 		ft_putchar_fd(c, 1);
-		c = 0;
 		kill(cpid, SIGUSR1);
 	}
 	else
