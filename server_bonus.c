@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kalshaer <kalshaer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 08:47:31 by kalshaer          #+#    #+#             */
-/*   Updated: 2023/01/23 20:14:06 by kalshaer         ###   ########.fr       */
+/*   Updated: 2023/01/23 21:09:13 by kalshaer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,12 @@ static void	handler_sigusr_server(int sig, siginfo_t *info, void *ucontext)
 		i = 0;
 		if (!c)
 		{
+			kill(cpid, SIGUSR2);
 			cpid = 0;
 			return ;
 		}
 		ft_putchar_fd(c, 1);
+		//kill(cpid, SIGUSR1);
 	}
 	else
 		c = c << 1;
