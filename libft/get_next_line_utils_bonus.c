@@ -6,7 +6,7 @@
 /*   By: kalshaer <kalshaer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 08:26:17 by kalshaer          #+#    #+#             */
-/*   Updated: 2023/01/16 20:27:36 by kalshaer         ###   ########.fr       */
+/*   Updated: 2023/01/23 09:18:20 by kalshaer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ char	*ft_gnl_strjoin(char *s1, char *s2)
 		s1 = (char *) ft_gnl_calloc(1, sizeof(char));
 		s1[0] = 0;
 	}
-	r = (char *) ft_gnl_calloc(ft_gnl_strlen(s1) + ft_gnl_strlen(s2) + 2, sizeof(char));
+	r = (char *) ft_gnl_calloc(ft_gnl_strlen(s1)
+			+ ft_gnl_strlen(s2) + 2, sizeof(char));
 	if (!s1 || !s2 || !r)
 		return (0);
 	i = 0;
@@ -94,6 +95,6 @@ void	*ft_gnl_calloc(size_t count, size_t size)
 	if (!r)
 		return (0);
 	while (i < (count * size))
-	 	*((unsigned char *)r + i++) = 0;
+		*((unsigned char *)r + i++) = 0;
 	return ((void *)r);
 }

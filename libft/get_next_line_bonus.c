@@ -6,7 +6,7 @@
 /*   By: kalshaer <kalshaer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 08:26:34 by kalshaer          #+#    #+#             */
-/*   Updated: 2023/01/16 20:23:39 by kalshaer         ###   ########.fr       */
+/*   Updated: 2023/01/23 09:17:10 by kalshaer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,11 @@ char	*lft(char *r)
 
 char	*get_next_line(int fd)
 {
+	static char	*r[1024];
+	char		*p;
+
 	if (fd >= 0)
 	{
-		static char	*r[1024];
-		char		*p;
-
 		r[fd] = read_buff(fd, r[fd]);
 		if (!r[fd] || BUFFER_SIZE < 0)
 			return (NULL);

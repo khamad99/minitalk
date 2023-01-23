@@ -6,22 +6,24 @@
 /*   By: kalshaer <kalshaer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:21:16 by kalshaer          #+#    #+#             */
-/*   Updated: 2023/01/18 14:09:45 by kalshaer         ###   ########.fr       */
+/*   Updated: 2023/01/23 09:13:13 by kalshaer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void instantiatei(int *i)
+void	instantiatei(int *i)
 {
 	*i = 0;
 }
 
-/* this function handle the SIGUSR1 and SIGUSR2 that have been sent from server.*/
+/* this function handle the SIGUSR1 and SIGUSR2 
+that have been sent from server.*/
 
 static void	handler_sigusr(int sig)
-{	
-	static int i;
+{
+	static int	i;
+
 	if (!i)
 		instantiatei(&i);
 	if (sig == SIGUSR1)
@@ -33,35 +35,35 @@ static void	handler_sigusr(int sig)
 	}
 }
 
-/* this function take a string enterd by the client and send it to the server as a bit comparison.
-   it sends SIGUSR1 if the compered bit is 0 and SIGUSR2 if it is 1.
-*/
+/* this function take a string enterd by the client 
+and send it to the server as a bit comparison.
+it sends SIGUSR1 if the compered bit is 0 and SIGUSR2 if it is 1.*/
 
 static void	sendstr(int pid, char *str)
 {
-	int i;
-	char c;
+	int		i;
+	char	c;
+
 	while (*str)
 	{
 		i = 8;
 		c = *str++;
-		while(i--)
+		while (i--)
 		{
 			if ((c >> i) & 1)
-				kill(pid, SIGUSR2); // sending bit 1
+				kill(pid, SIGUSR2);
 			else
-				kill(pid, SIGUSR1); // sending bit 0
-			usleep (USTIME); // to avoid overlaping
+				kill(pid, SIGUSR1);
+			usleep (USTIME);
 		}
 	}
 	i = 8;
-	while(i--)
+	while (i--)
 	{
-		kill(pid, SIGUSR1); // sending bit 0 8 times as \0
+		kill(pid, SIGUSR1);
 		usleep (USTIME);
 	}
 }
-
 
 int	main(int argc, char **argv)
 {

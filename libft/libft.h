@@ -6,7 +6,7 @@
 /*   By: kalshaer <kalshaer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 09:12:50 by kalshaer          #+#    #+#             */
-/*   Updated: 2023/01/16 20:25:49 by kalshaer         ###   ########.fr       */
+/*   Updated: 2023/01/23 09:18:58 by kalshaer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,15 +82,15 @@ void		ft_lstclear(t_list **lst, void (*del)(void *));
 void		ft_lstiter(t_list *lst, void (*f)(void *));
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
-size_t	ft_gnl_strlen(const char *s);
-char	*ft_gnl_strchr(char *s, int c, size_t i);
-char	*ft_gnl_strjoin(char *s1, char *s2);
-size_t	ft_gnl_strlcpy(char *dst, char *src, size_t dstsize);
-void	*ft_gnl_calloc(size_t count, size_t size);
-char	*read_buff(int fd, char *r);
-char	*toprint(char *p);
-char	*lft(char *r);
-char	*get_next_line(int fd);
+size_t		ft_gnl_strlen(const char *s);
+char		*ft_gnl_strchr(char *s, int c, size_t i);
+char		*ft_gnl_strjoin(char *s1, char *s2);
+size_t		ft_gnl_strlcpy(char *dst, char *src, size_t dstsize);
+void		*ft_gnl_calloc(size_t count, size_t size);
+char		*read_buff(int fd, char *r);
+char		*toprint(char *p);
+char		*lft(char *r);
+char		*get_next_line(int fd);
 
 int			ft_printf(const char *s, ...);
 void		ft_printf_tomin(const char *s, va_list r, t_type t, int *num);

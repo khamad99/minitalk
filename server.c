@@ -6,13 +6,13 @@
 /*   By: kalshaer <kalshaer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 08:47:31 by kalshaer          #+#    #+#             */
-/*   Updated: 2023/01/18 14:02:56 by kalshaer         ###   ########.fr       */
+/*   Updated: 2023/01/23 09:15:12 by kalshaer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-static void instantiate(int *i, pid_t *cpid, unsigned char *c, siginfo_t *info)
+static void	instantiate(int *i, pid_t *cpid, unsigned char *c, siginfo_t *info)
 {
 	*i = 0;
 	*cpid = info->si_pid;
@@ -21,11 +21,11 @@ static void instantiate(int *i, pid_t *cpid, unsigned char *c, siginfo_t *info)
 
 static void	handler_sigusr_server(int sig, siginfo_t *info, void *ucontext)
 {
-	(void)ucontext;
 	static int				i;
 	static pid_t			cpid;
 	static unsigned char	c;
 
+	(void)ucontext;
 	if ((!i && !cpid) || !i)
 		instantiate(&i, &cpid, &c, info);
 	c = c | (sig == SIGUSR2);
@@ -47,8 +47,8 @@ static void	handler_sigusr_server(int sig, siginfo_t *info, void *ucontext)
 
 int	main(void)
 {
-	struct sigaction sa;
-	
+	struct sigaction	sa;
+
 	ft_printf("Server ID is: %d\n", getpid());
 	sa.sa_flags = SA_SIGINFO;
 	sa.sa_sigaction = &handler_sigusr_server;
