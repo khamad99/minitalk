@@ -6,7 +6,7 @@
 #    By: kalshaer <kalshaer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/12 14:21:22 by kalshaer          #+#    #+#              #
-#    Updated: 2023/01/16 20:29:09 by kalshaer         ###   ########.fr        #
+#    Updated: 2023/01/23 07:52:33 by kalshaer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,13 +24,13 @@ CC		= cc
 
 $(NAME1): $(NAME2)
 	$(MAKE) -C ./libft
-	CC $(FLAGS) -c $(SRCS1)
-	CC $(OBJS1) $(LIBFT) -o $(NAME1)
+	$(CC) $(FLAGS) -c $(SRCS1)
+	$(CC) $(OBJS1) $(LIBFT) -o $(NAME1)
 
 $(NAME2):
 	$(MAKE) -C ./libft
-	CC $(FLAGS) -c $(SRCS2)
-	CC $(OBJS2) $(LIBFT) -o $(NAME2)
+	$(CC) $(FLAGS) -c $(SRCS2)
+	$(CC) $(OBJS2) $(LIBFT) -o $(NAME2)
 
 all: $(NAME1) $(NAME2)
 

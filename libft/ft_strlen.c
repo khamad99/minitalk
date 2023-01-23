@@ -6,11 +6,11 @@
 /*   By: kalshaer <kalshaer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 09:04:01 by kalshaer          #+#    #+#             */
-/*   Updated: 2022/07/30 11:38:35 by kalshaer         ###   ########.fr       */
+/*   Updated: 2023/01/23 07:52:01 by kalshaer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libc.h"
+#include "libft.h"
 
 size_t	ft_strlen(const char *s)
 {
