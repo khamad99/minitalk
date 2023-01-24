@@ -6,7 +6,7 @@
 /*   By: kalshaer <kalshaer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:08:09 by kalshaer          #+#    #+#             */
-/*   Updated: 2023/01/23 20:50:59 by kalshaer         ###   ########.fr       */
+/*   Updated: 2023/01/24 11:00:20 by kalshaer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,5 @@
 
 # include "./libft/libft.h"
 # include <signal.h>
-# define USTIME 500
 
 #endif

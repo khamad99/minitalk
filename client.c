@@ -6,7 +6,7 @@
 /*   By: kalshaer <kalshaer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:21:16 by kalshaer          #+#    #+#             */
-/*   Updated: 2023/01/23 20:13:11 by kalshaer         ###   ########.fr       */
+/*   Updated: 2023/01/24 11:00:11 by kalshaer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,14 @@ static void	sendstr(int pid, char *str)
 				kill(pid, SIGUSR2);
 			else
 				kill(pid, SIGUSR1);
-			usleep (USTIME);
+			usleep (100);
 		}
 	}
 	i = 8;
 	while (i--)
 	{
 		kill(pid, SIGUSR1);
-		usleep (USTIME);
+		usleep (100);
 	}
 }
 
@@ -47,6 +47,5 @@ int	main(int argc, char **argv)
 	if (argc != 3 || ft_strlen(argv[2]) == 0)
 		return (1);
 	sendstr(ft_atoi(argv[1]), argv[2]);
-	ft_printf("Sent: %d\n", ft_strlen(argv[2]));
 	return (0);
 }
