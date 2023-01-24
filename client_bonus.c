@@ -6,7 +6,7 @@
 /*   By: kalshaer <kalshaer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:21:16 by kalshaer          #+#    #+#             */
-/*   Updated: 2023/01/24 11:09:35 by kalshaer         ###   ########.fr       */
+/*   Updated: 2023/01/24 11:20:54 by kalshaer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ that have been sent from server.*/
 static void	handler_sigusr(int sig)
 {
 	static int	i;
+
 	if (!i)
 		i = 0;
 	if (sig == SIGUSR1)
