@@ -6,16 +6,11 @@
 /*   By: kalshaer <kalshaer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:21:16 by kalshaer          #+#    #+#             */
-/*   Updated: 2023/01/23 21:07:07 by kalshaer         ###   ########.fr       */
+/*   Updated: 2023/01/24 10:24:53 by kalshaer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-
-// void	instantiatei(int *i)
-// {
-// 	*i = 0;
-// }
 
 /* this function handle the SIGUSR1 and SIGUSR2 
 that have been sent from server.*/
@@ -23,15 +18,14 @@ that have been sent from server.*/
 static void	handler_sigusr(int sig)
 {
 	static int	i;
-
 	if (!i)
 		i = 0;
 	if (sig == SIGUSR1)
 		i++;
 	else
 	{
-		//ft_printf("received: %d\n", i);
-		write(1,"received\n", 10);
+		ft_printf("received: %d\n", i);
+		//write(1,"received\n", 10);
 		exit(0);
 	}
 }
@@ -55,19 +49,22 @@ static void	sendstr(int pid, char *str)
 				kill(pid, SIGUSR2);
 			else
 				kill(pid, SIGUSR1);
-			usleep (350);
-		}
+			usleep(100);
+		}	
+		usleep(100);
 	}
 	i = 8;
 	while (i--)
 	{
 		kill(pid, SIGUSR1);
-		usleep (350);
+		usleep (100);
 	}
+	usleep(100);
 }
 
 int	main(int argc, char **argv)
 {
+	
 	if (argc != 3 || ft_strlen(argv[2]) == 0)
 		return (1);
 	signal(SIGUSR1, handler_sigusr);

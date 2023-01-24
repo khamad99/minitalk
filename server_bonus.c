@@ -6,7 +6,7 @@
 /*   By: kalshaer <kalshaer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 08:47:31 by kalshaer          #+#    #+#             */
-/*   Updated: 2023/01/23 21:09:13 by kalshaer         ###   ########.fr       */
+/*   Updated: 2023/01/24 10:10:28 by kalshaer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	handler_sigusr_server(int sig, siginfo_t *info, void *ucontext)
 			return ;
 		}
 		ft_putchar_fd(c, 1);
-		//kill(cpid, SIGUSR1);
+		kill(cpid, SIGUSR1);
 	}
 	else
 		c = c << 1;
